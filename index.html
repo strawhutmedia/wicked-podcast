@@ -538,35 +538,28 @@
             font-weight: 900;
         }
 
-        /* Testimonials */
+        /* Testimonials - Two Column Grid */
         .testimonials-wrapper {
-            overflow: hidden;
             margin-top: 2rem;
         }
 
-        .testimonials-track {
-            display: flex;
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 25px;
-            animation: scroll 40s linear infinite;
         }
 
-        .testimonials-track:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        @media (max-width: 900px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .testimonial-card {
-            min-width: 400px;
-            max-width: 400px;
             background: var(--dark-gray);
             border-radius: 20px;
             padding: 30px;
             border: 1px solid #222;
-            flex-shrink: 0;
         }
 
         .testimonial-header {
@@ -735,8 +728,8 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">Universal Pictures Presents</div>
-            <h1 class="hero-title">COMPANION PODCAST</h1>
             <div class="hero-logo">WICKED</div>
+            <h1 class="hero-title">COMPANION PODCAST</h1>
 
             <!-- Big Total Reach Number -->
             <div class="hero-stat" style="margin-bottom: 2rem;">
@@ -755,7 +748,7 @@
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-number gradient-text-green" id="totalHours">36,334</div>
-                    <div class="hero-stat-label">Hours Consumed</div>
+                    <div class="hero-stat-label">Audio/Video Hours</div>
                 </div>
             </div>
 
@@ -784,7 +777,7 @@
     <section class="animate-on-scroll">
         <h2 class="section-title gradient-text-green">Explosive Growth</h2>
         <div class="underline"></div>
-        <p class="section-subtitle">From launch to 288K+ downloads in just 11 weeks</p>
+        <p class="section-subtitle">From launch to 798K+ total reach in just 11 weeks</p>
 
         <div class="chart-container">
             <div class="chart-header">
@@ -854,7 +847,7 @@
             </div>
             <div class="big-stat-card pink-accent">
                 <div class="big-stat-icon">&#9200;</div>
-                <div class="big-stat-value gradient-text-pink">22.5</div>
+                <div class="big-stat-value gradient-text-pink">23.1</div>
                 <div class="big-stat-label">Avg. Minutes/Episode</div>
             </div>
         </div>
@@ -867,6 +860,7 @@
         <p class="section-subtitle">Deep dives with the cast and crew of Wicked</p>
 
         <div class="episodes-grid">
+            <!-- Episode 1 -->
             <div class="episode-card">
                 <div class="episode-header">
                     <div class="episode-number">Episode 1</div>
@@ -879,46 +873,21 @@
                         <div class="episode-stat-label">Downloads</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value gradient-text-pink">158K</div>
+                        <div class="episode-stat-value gradient-text-pink">158,392</div>
                         <div class="episode-stat-label">YouTube Views</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value">21.9</div>
+                        <div class="episode-stat-value">21.93</div>
                         <div class="episode-stat-label">Avg. Minutes</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value">59.7%</div>
+                        <div class="episode-stat-value">59.68%</div>
                         <div class="episode-stat-label">Watch Rate</div>
                     </div>
                 </div>
             </div>
 
-            <div class="episode-card">
-                <div class="episode-header">
-                    <div class="episode-number">Episode 4</div>
-                    <div class="episode-date">Nov 20, 2025</div>
-                </div>
-                <div class="episode-title">The Music of Wicked: For Good</div>
-                <div class="episode-stats">
-                    <div class="episode-stat">
-                        <div class="episode-stat-value gradient-text-green">82,323</div>
-                        <div class="episode-stat-label">Downloads</div>
-                    </div>
-                    <div class="episode-stat">
-                        <div class="episode-stat-value gradient-text-pink">48K</div>
-                        <div class="episode-stat-label">YouTube Views</div>
-                    </div>
-                    <div class="episode-stat">
-                        <div class="episode-stat-value">22.3</div>
-                        <div class="episode-stat-label">Avg. Minutes</div>
-                    </div>
-                    <div class="episode-stat">
-                        <div class="episode-stat-value">81.4%</div>
-                        <div class="episode-stat-label">Watch Rate</div>
-                    </div>
-                </div>
-            </div>
-
+            <!-- Episode 2 -->
             <div class="episode-card">
                 <div class="episode-header">
                     <div class="episode-number">Episode 2</div>
@@ -931,20 +900,21 @@
                         <div class="episode-stat-label">Downloads</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value gradient-text-pink">163K</div>
+                        <div class="episode-stat-value gradient-text-pink">163,436</div>
                         <div class="episode-stat-label">YouTube Views</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value">22.5</div>
+                        <div class="episode-stat-value">22.54</div>
                         <div class="episode-stat-label">Avg. Minutes</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value">54.6%</div>
+                        <div class="episode-stat-value">54.59%</div>
                         <div class="episode-stat-label">Watch Rate</div>
                     </div>
                 </div>
             </div>
 
+            <!-- Episode 3 -->
             <div class="episode-card">
                 <div class="episode-header">
                     <div class="episode-number">Episode 3</div>
@@ -957,46 +927,75 @@
                         <div class="episode-stat-label">Downloads</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value gradient-text-pink">54K</div>
+                        <div class="episode-stat-value gradient-text-pink">53,902</div>
                         <div class="episode-stat-label">YouTube Views</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value">24.8</div>
+                        <div class="episode-stat-value">24.76</div>
                         <div class="episode-stat-label">Avg. Minutes</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value">56.1%</div>
+                        <div class="episode-stat-value">56.06%</div>
                         <div class="episode-stat-label">Watch Rate</div>
                     </div>
                 </div>
             </div>
 
+            <!-- Episode 4 -->
             <div class="episode-card">
                 <div class="episode-header">
-                    <div class="episode-number">Episode 8</div>
-                    <div class="episode-date">Dec 18, 2025</div>
+                    <div class="episode-number">Episode 4</div>
+                    <div class="episode-date">Nov 20, 2025</div>
                 </div>
-                <div class="episode-title">Changed For Good</div>
+                <div class="episode-title">The Music of Wicked: For Good</div>
                 <div class="episode-stats">
                     <div class="episode-stat">
-                        <div class="episode-stat-value gradient-text-green">11,163</div>
+                        <div class="episode-stat-value gradient-text-green">82,323</div>
                         <div class="episode-stat-label">Downloads</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value gradient-text-pink">18K</div>
+                        <div class="episode-stat-value gradient-text-pink">48,194</div>
                         <div class="episode-stat-label">YouTube Views</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value">23.0</div>
+                        <div class="episode-stat-value">22.26</div>
                         <div class="episode-stat-label">Avg. Minutes</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value">48.3%</div>
+                        <div class="episode-stat-value">81.37%</div>
                         <div class="episode-stat-label">Watch Rate</div>
                     </div>
                 </div>
             </div>
 
+            <!-- Episode 5 -->
+            <div class="episode-card">
+                <div class="episode-header">
+                    <div class="episode-number">Episode 5</div>
+                    <div class="episode-date">Nov 27, 2025</div>
+                </div>
+                <div class="episode-title">Inside the New Songs of Wicked: For Good</div>
+                <div class="episode-stats">
+                    <div class="episode-stat">
+                        <div class="episode-stat-value gradient-text-green">17,606</div>
+                        <div class="episode-stat-label">Downloads</div>
+                    </div>
+                    <div class="episode-stat">
+                        <div class="episode-stat-value gradient-text-pink">38,119</div>
+                        <div class="episode-stat-label">YouTube Views</div>
+                    </div>
+                    <div class="episode-stat">
+                        <div class="episode-stat-value">22.02</div>
+                        <div class="episode-stat-label">Avg. Minutes</div>
+                    </div>
+                    <div class="episode-stat">
+                        <div class="episode-stat-value">51.89%</div>
+                        <div class="episode-stat-label">Watch Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Episode 6 -->
             <div class="episode-card">
                 <div class="episode-header">
                     <div class="episode-number">Episode 6</div>
@@ -1009,15 +1008,69 @@
                         <div class="episode-stat-label">Downloads</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value gradient-text-pink">16K</div>
+                        <div class="episode-stat-value gradient-text-pink">16,051</div>
                         <div class="episode-stat-label">YouTube Views</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value">24.0</div>
+                        <div class="episode-stat-value">23.99</div>
                         <div class="episode-stat-label">Avg. Minutes</div>
                     </div>
                     <div class="episode-stat">
-                        <div class="episode-stat-value">51.8%</div>
+                        <div class="episode-stat-value">51.81%</div>
+                        <div class="episode-stat-label">Watch Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Episode 7 -->
+            <div class="episode-card">
+                <div class="episode-header">
+                    <div class="episode-number">Episode 7</div>
+                    <div class="episode-date">Dec 11, 2025</div>
+                </div>
+                <div class="episode-title">Thrillifying Threads and Magical Makeup</div>
+                <div class="episode-stats">
+                    <div class="episode-stat">
+                        <div class="episode-stat-value gradient-text-green">11,342</div>
+                        <div class="episode-stat-label">Downloads</div>
+                    </div>
+                    <div class="episode-stat">
+                        <div class="episode-stat-value gradient-text-pink">14,505</div>
+                        <div class="episode-stat-label">YouTube Views</div>
+                    </div>
+                    <div class="episode-stat">
+                        <div class="episode-stat-value">24.21</div>
+                        <div class="episode-stat-label">Avg. Minutes</div>
+                    </div>
+                    <div class="episode-stat">
+                        <div class="episode-stat-value">53.57%</div>
+                        <div class="episode-stat-label">Watch Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Episode 8 -->
+            <div class="episode-card">
+                <div class="episode-header">
+                    <div class="episode-number">Episode 8</div>
+                    <div class="episode-date">Dec 18, 2025</div>
+                </div>
+                <div class="episode-title">Changed For Good</div>
+                <div class="episode-stats">
+                    <div class="episode-stat">
+                        <div class="episode-stat-value gradient-text-green">11,163</div>
+                        <div class="episode-stat-label">Downloads</div>
+                    </div>
+                    <div class="episode-stat">
+                        <div class="episode-stat-value gradient-text-pink">17,765</div>
+                        <div class="episode-stat-label">YouTube Views</div>
+                    </div>
+                    <div class="episode-stat">
+                        <div class="episode-stat-value">22.96</div>
+                        <div class="episode-stat-label">Avg. Minutes</div>
+                    </div>
+                    <div class="episode-stat">
+                        <div class="episode-stat-value">48.33%</div>
                         <div class="episode-stat-label">Watch Rate</div>
                     </div>
                 </div>
@@ -1153,7 +1206,7 @@
         <p class="section-subtitle">What listeners are saying about the podcast</p>
 
         <div class="testimonials-wrapper">
-            <div class="testimonials-track">
+            <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-platform">Spotify</div>
@@ -1224,43 +1277,6 @@
                     </div>
                     <div class="testimonial-text">"I love hearing about the emotional attunement and care that the cast and crew brought to the filming experience. Thanks for enriching our connection to the film!"</div>
                     <div class="testimonial-author">- Depth, Creativity, and BTS</div>
-                </div>
-
-                <!-- Duplicate for seamless loop -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Spotify</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"I'm gonna be honest, wicked saved my life. I relate so much with Elphie. Thank you so much for sharing this podcast. I will miss the movie so much."</div>
-                    <div class="testimonial-author">- Elphaba</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Apple</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"I loved this podcast because I'm a huge theatre nerd and this has always been more than a musical for me and it was really nice to understand behind the scene"</div>
-                    <div class="testimonial-author">- IM OBSESSED</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Spotify</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"A beautifully crafted podcast honouring an extraordinary story. Thank you for sharing it with us all - we have been changed for good"</div>
-                    <div class="testimonial-author">- neeks</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Apple</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"Wicked has quite literally changed me for good my lifestyle is wicked and everything I say do and love has been changed by wicked I love it and care for it so deeply."</div>
-                    <div class="testimonial-author">- My life</div>
                 </div>
             </div>
         </div>
@@ -1376,11 +1392,35 @@
             });
         }
 
+        // Track if chart has animated
+        let chartAnimated = false;
+
+        // Function to animate chart when visible
+        function animateChart() {
+            if (chartAnimated) return;
+            chartAnimated = true;
+
+            const chartLine = document.getElementById('chartLine');
+            const length = chartLine.getTotalLength();
+            chartLine.style.strokeDasharray = length;
+            chartLine.style.strokeDashoffset = length;
+            chartLine.style.transition = 'stroke-dashoffset 2.5s ease-out';
+
+            setTimeout(() => {
+                chartLine.style.strokeDashoffset = '0';
+            }, 300);
+        }
+
         // Intersection Observer for scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+
+                    // Trigger chart animation when chart section is visible
+                    if (entry.target.querySelector('.chart-container')) {
+                        setTimeout(animateChart, 300);
+                    }
 
                     // Trigger bar animations when audience section is visible
                     if (entry.target.querySelector('.bar-fill')) {
@@ -1412,19 +1452,14 @@
                 animateNumber(document.getElementById('statYouTube'), 510364);
             }, 1000);
 
-            // Draw chart
+            // Draw chart (but don't animate yet - wait for scroll)
             drawChart();
 
-            // Animate chart line
+            // Set initial state for chart line (hidden)
             const chartLine = document.getElementById('chartLine');
             const length = chartLine.getTotalLength();
             chartLine.style.strokeDasharray = length;
             chartLine.style.strokeDashoffset = length;
-            chartLine.style.transition = 'stroke-dashoffset 2.5s ease-out';
-
-            setTimeout(() => {
-                chartLine.style.strokeDashoffset = '0';
-            }, 500);
         });
     </script>
 </body>
