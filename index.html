@@ -560,17 +560,15 @@
             animation: scrollLeft 35s linear infinite;
         }
 
-        .testimonials-row:hover {
-            animation-play-state: paused;
+        @media (hover: hover) {
+            .testimonials-row:hover {
+                animation-play-state: paused;
+            }
         }
 
         .testimonials-row.dragging {
             animation-play-state: paused;
             cursor: grabbing;
-        }
-
-        .testimonials-row.paused {
-            animation-play-state: paused;
         }
 
         @keyframes scrollRight {
@@ -1568,87 +1566,68 @@
             rows.forEach(row => {
                 let isDown = false;
                 let startX;
-                let currentTransform = 0;
+                let scrollLeft = 0;
                 let resumeTimeout;
 
-                // Get initial transform from animation
-                function getCurrentTransform() {
+                function getTranslateX() {
                     const style = window.getComputedStyle(row);
-                    const matrix = new DOMParser().parseFromString(
-                        `<svg><g transform="${style.transform}"/></svg>`, 'image/svg+xml'
-                    ).querySelector('g');
-                    if (style.transform !== 'none') {
-                        const values = style.transform.match(/matrix.*\((.+)\)/);
-                        if (values) {
-                            const parts = values[1].split(', ');
-                            return parseFloat(parts[4]) || 0;
+                    const transform = style.transform;
+                    if (transform && transform !== 'none') {
+                        const match = transform.match(/matrix\(([^)]+)\)/);
+                        if (match) {
+                            const values = match[1].split(',').map(v => parseFloat(v.trim()));
+                            return values[4] || 0;
                         }
                     }
                     return 0;
                 }
 
-                function pauseAndSetTransform() {
-                    currentTransform = getCurrentTransform();
-                    row.classList.add('paused');
-                    row.style.transform = `translateX(${currentTransform}px)`;
-                }
-
-                function resumeAnimation() {
-                    row.style.transform = '';
-                    row.classList.remove('paused');
-                }
-
-                // Mouse events
-                row.addEventListener('mousedown', (e) => {
+                function startDrag(pageX) {
                     isDown = true;
                     row.classList.add('dragging');
-                    startX = e.pageX;
+                    scrollLeft = getTranslateX();
+                    startX = pageX;
                     clearTimeout(resumeTimeout);
-                    pauseAndSetTransform();
-                });
+                    row.style.transform = `translateX(${scrollLeft}px)`;
+                }
 
-                row.addEventListener('mouseleave', () => {
+                function endDrag() {
+                    if (!isDown) return;
+                    isDown = false;
+                    row.classList.remove('dragging');
+                    resumeTimeout = setTimeout(() => {
+                        row.style.transform = '';
+                    }, 3000);
+                }
+
+                function moveDrag(pageX) {
+                    if (!isDown) return;
+                    const walk = (pageX - startX) * 1.5;
+                    row.style.transform = `translateX(${scrollLeft + walk}px)`;
+                }
+
+                // Mouse events (desktop)
+                row.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    startDrag(e.pageX);
+                });
+                row.addEventListener('mouseleave', endDrag);
+                row.addEventListener('mouseup', endDrag);
+                row.addEventListener('mousemove', (e) => {
                     if (isDown) {
-                        isDown = false;
-                        row.classList.remove('dragging');
-                        resumeTimeout = setTimeout(resumeAnimation, 3000);
+                        e.preventDefault();
+                        moveDrag(e.pageX);
                     }
                 });
 
-                row.addEventListener('mouseup', () => {
-                    isDown = false;
-                    row.classList.remove('dragging');
-                    resumeTimeout = setTimeout(resumeAnimation, 3000);
-                });
-
-                row.addEventListener('mousemove', (e) => {
-                    if (!isDown) return;
-                    e.preventDefault();
-                    const x = e.pageX;
-                    const walk = (x - startX) * 1.5;
-                    row.style.transform = `translateX(${currentTransform + walk}px)`;
-                });
-
-                // Touch events
+                // Touch events (mobile)
                 row.addEventListener('touchstart', (e) => {
-                    isDown = true;
-                    row.classList.add('dragging');
-                    startX = e.touches[0].pageX;
-                    clearTimeout(resumeTimeout);
-                    pauseAndSetTransform();
+                    startDrag(e.touches[0].pageX);
                 }, { passive: true });
-
-                row.addEventListener('touchend', () => {
-                    isDown = false;
-                    row.classList.remove('dragging');
-                    resumeTimeout = setTimeout(resumeAnimation, 3000);
-                });
-
+                row.addEventListener('touchend', endDrag);
+                row.addEventListener('touchcancel', endDrag);
                 row.addEventListener('touchmove', (e) => {
-                    if (!isDown) return;
-                    const x = e.touches[0].pageX;
-                    const walk = (x - startX) * 1.5;
-                    row.style.transform = `translateX(${currentTransform + walk}px)`;
+                    moveDrag(e.touches[0].pageX);
                 }, { passive: true });
             });
         }
