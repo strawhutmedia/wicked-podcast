@@ -541,55 +541,45 @@
             font-weight: 900;
         }
 
-        /* Testimonials - Two Scrolling Rows */
+        /* Testimonials - Scrollable Rows */
         .testimonials-wrapper {
             margin-top: 2rem;
-            overflow: hidden;
         }
 
         .testimonials-row {
             display: flex;
             gap: 25px;
             margin-bottom: 25px;
-            animation: scrollRight 35s linear infinite;
-            cursor: grab;
+            overflow-x: auto;
+            overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 10px;
         }
 
-        .testimonials-row:nth-child(2) {
-            animation: scrollLeft 35s linear infinite;
-        }
-
-        @media (hover: hover) {
-            .testimonials-row:hover {
-                animation-play-state: paused;
-            }
-        }
-
-        .testimonials-row.dragging {
-            animation-play-state: paused;
-            cursor: grabbing;
-        }
-
-        @keyframes scrollRight {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        @keyframes scrollLeft {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
+        .testimonials-row::-webkit-scrollbar {
+            display: none;
         }
 
         .testimonial-card {
-            min-width: 380px;
-            max-width: 380px;
+            min-width: 320px;
+            max-width: 320px;
             background: var(--dark-gray);
             border-radius: 20px;
-            padding: 30px;
+            padding: 25px;
             border: 1px solid #222;
             flex-shrink: 0;
-            user-select: none;
+            scroll-snap-align: start;
+        }
+
+        @media (min-width: 769px) {
+            .testimonial-card {
+                min-width: 380px;
+                max-width: 380px;
+                padding: 30px;
+            }
         }
 
         .testimonial-header {
@@ -1236,7 +1226,6 @@
         <p class="section-subtitle">What listeners are saying about the podcast</p>
 
         <div class="testimonials-wrapper">
-            <!-- Row 1 - scrolls right -->
             <div class="testimonials-row">
                 <div class="testimonial-card">
                     <div class="testimonial-header">
@@ -1270,76 +1259,6 @@
                     <div class="testimonial-text">"Wicked has quite literally changed me for good my lifestyle is wicked and everything I say do and love has been changed by wicked I love it and care for it so deeply."</div>
                     <div class="testimonial-author">- My life</div>
                 </div>
-                <!-- Duplicates for seamless loop -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Spotify</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"I'm gonna be honest, wicked saved my life. I relate so much with Elphie. Thank you so much for sharing this podcast. I will miss the movie so much."</div>
-                    <div class="testimonial-author">- Elphaba</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Apple</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"I loved this podcast because I'm a huge theatre nerd and this has always been more than a musical for me and it was really nice to understand behind the scene"</div>
-                    <div class="testimonial-author">- IM OBSESSED</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Spotify</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"A beautifully crafted podcast honouring an extraordinary story. Thank you for sharing it with us all - we have been changed for good"</div>
-                    <div class="testimonial-author">- neeks</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Apple</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"Wicked has quite literally changed me for good my lifestyle is wicked and everything I say do and love has been changed by wicked I love it and care for it so deeply."</div>
-                    <div class="testimonial-author">- My life</div>
-                </div>
-            </div>
-
-            <!-- Row 2 - scrolls left -->
-            <div class="testimonials-row">
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Spotify</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"Thank you for taking me through an amazing journey and sharing everything the magic the characters. I have definitely been changed after watching Wicked For Good."</div>
-                    <div class="testimonial-author">- Jessica</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Apple</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"This is positively emerald!!!!!! Completely obsessulated! The first episode is SO GOOD! Love the fact that Jon Chu was at the San Francisco performances."</div>
-                    <div class="testimonial-author">- Joey Hernandez Syracuse, NY</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Spotify</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"I love wicked soooooooooo much it just touches your heart deeply and emotionally. Jonathan bailey, Ariana Grande, Cynthia... YOU ARE ALL AMAZING"</div>
-                    <div class="testimonial-author">- Taormina Horsey Girl</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-platform">Apple</div>
-                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    </div>
-                    <div class="testimonial-text">"I love hearing about the emotional attunement and care that the cast and crew brought to the filming experience. Thanks for enriching our connection to the film!"</div>
-                    <div class="testimonial-author">- Depth, Creativity, and BTS</div>
-                </div>
-                <!-- Duplicates for seamless loop -->
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-platform">Spotify</div>
@@ -1555,82 +1474,6 @@
             chartLine.style.strokeDasharray = length;
             chartLine.style.strokeDashoffset = length;
 
-            // Initialize testimonials drag/touch scrolling
-            initTestimonialsScroll();
-        });
-
-        // Testimonials drag/touch scrolling
-        function initTestimonialsScroll() {
-            const rows = document.querySelectorAll('.testimonials-row');
-
-            rows.forEach(row => {
-                let isDown = false;
-                let startX;
-                let scrollLeft = 0;
-                let resumeTimeout;
-
-                function getTranslateX() {
-                    const style = window.getComputedStyle(row);
-                    const transform = style.transform;
-                    if (transform && transform !== 'none') {
-                        const match = transform.match(/matrix\(([^)]+)\)/);
-                        if (match) {
-                            const values = match[1].split(',').map(v => parseFloat(v.trim()));
-                            return values[4] || 0;
-                        }
-                    }
-                    return 0;
-                }
-
-                function startDrag(pageX) {
-                    isDown = true;
-                    row.classList.add('dragging');
-                    scrollLeft = getTranslateX();
-                    startX = pageX;
-                    clearTimeout(resumeTimeout);
-                    row.style.transform = `translateX(${scrollLeft}px)`;
-                }
-
-                function endDrag() {
-                    if (!isDown) return;
-                    isDown = false;
-                    row.classList.remove('dragging');
-                    resumeTimeout = setTimeout(() => {
-                        row.style.transform = '';
-                    }, 3000);
-                }
-
-                function moveDrag(pageX) {
-                    if (!isDown) return;
-                    const walk = (pageX - startX) * 1.5;
-                    row.style.transform = `translateX(${scrollLeft + walk}px)`;
-                }
-
-                // Mouse events (desktop)
-                row.addEventListener('mousedown', (e) => {
-                    e.preventDefault();
-                    startDrag(e.pageX);
-                });
-                row.addEventListener('mouseleave', endDrag);
-                row.addEventListener('mouseup', endDrag);
-                row.addEventListener('mousemove', (e) => {
-                    if (isDown) {
-                        e.preventDefault();
-                        moveDrag(e.pageX);
-                    }
-                });
-
-                // Touch events (mobile)
-                row.addEventListener('touchstart', (e) => {
-                    startDrag(e.touches[0].pageX);
-                }, { passive: true });
-                row.addEventListener('touchend', endDrag);
-                row.addEventListener('touchcancel', endDrag);
-                row.addEventListener('touchmove', (e) => {
-                    moveDrag(e.touches[0].pageX);
-                }, { passive: true });
-            });
-        }
     </script>
 </body>
 </html>
