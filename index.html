@@ -552,6 +552,8 @@
             gap: 25px;
             margin-bottom: 25px;
             animation: scrollRight 35s linear infinite;
+            cursor: grab;
+            -webkit-overflow-scrolling: touch;
         }
 
         .testimonials-row:nth-child(2) {
@@ -559,6 +561,15 @@
         }
 
         .testimonials-row:hover {
+            animation-play-state: paused;
+        }
+
+        .testimonials-row.dragging {
+            animation-play-state: paused;
+            cursor: grabbing;
+        }
+
+        .testimonials-row.paused {
             animation-play-state: paused;
         }
 
@@ -580,6 +591,7 @@
             padding: 30px;
             border: 1px solid #222;
             flex-shrink: 0;
+            user-select: none;
         }
 
         .testimonial-header {
@@ -747,7 +759,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">Universal Pictures Presents</div>
+            <div class="hero-badge">Straw Hut Media Presents</div>
             <div class="hero-logo">WICKED</div>
             <h1 class="hero-title">COMPANION PODCAST</h1>
 
@@ -760,7 +772,7 @@
             <div class="hero-stats">
                 <div class="hero-stat">
                     <div class="hero-stat-number gradient-text-green" id="totalDownloads">0</div>
-                    <div class="hero-stat-label">Podcast Downloads</div>
+                    <div class="hero-stat-label">RSS Podcast Downloads</div>
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-number gradient-text-pink" id="totalYouTube">0</div>
@@ -1369,8 +1381,8 @@
     <!-- Footer -->
     <footer>
         <div class="footer-logo">WICKED</div>
-        <div class="footer-text">The Official Podcast | Universal Pictures</div>
-        <div class="footer-text" style="margin-top: 10px; opacity: 0.5;">Data as of January 9, 2026</div>
+        <div class="footer-text">The Official Podcast | Produced by Straw Hut Media</div>
+        <div class="footer-text" style="margin-top: 10px; opacity: 0.5;">Data from Episode 1 (Oct 30, 2025) through January 9, 2026</div>
     </footer>
 
     <script>
@@ -1544,7 +1556,102 @@
             const length = chartLine.getTotalLength();
             chartLine.style.strokeDasharray = length;
             chartLine.style.strokeDashoffset = length;
+
+            // Initialize testimonials drag/touch scrolling
+            initTestimonialsScroll();
         });
+
+        // Testimonials drag/touch scrolling
+        function initTestimonialsScroll() {
+            const rows = document.querySelectorAll('.testimonials-row');
+
+            rows.forEach(row => {
+                let isDown = false;
+                let startX;
+                let currentTransform = 0;
+                let resumeTimeout;
+
+                // Get initial transform from animation
+                function getCurrentTransform() {
+                    const style = window.getComputedStyle(row);
+                    const matrix = new DOMParser().parseFromString(
+                        `<svg><g transform="${style.transform}"/></svg>`, 'image/svg+xml'
+                    ).querySelector('g');
+                    if (style.transform !== 'none') {
+                        const values = style.transform.match(/matrix.*\((.+)\)/);
+                        if (values) {
+                            const parts = values[1].split(', ');
+                            return parseFloat(parts[4]) || 0;
+                        }
+                    }
+                    return 0;
+                }
+
+                function pauseAndSetTransform() {
+                    currentTransform = getCurrentTransform();
+                    row.classList.add('paused');
+                    row.style.transform = `translateX(${currentTransform}px)`;
+                }
+
+                function resumeAnimation() {
+                    row.style.transform = '';
+                    row.classList.remove('paused');
+                }
+
+                // Mouse events
+                row.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    row.classList.add('dragging');
+                    startX = e.pageX;
+                    clearTimeout(resumeTimeout);
+                    pauseAndSetTransform();
+                });
+
+                row.addEventListener('mouseleave', () => {
+                    if (isDown) {
+                        isDown = false;
+                        row.classList.remove('dragging');
+                        resumeTimeout = setTimeout(resumeAnimation, 3000);
+                    }
+                });
+
+                row.addEventListener('mouseup', () => {
+                    isDown = false;
+                    row.classList.remove('dragging');
+                    resumeTimeout = setTimeout(resumeAnimation, 3000);
+                });
+
+                row.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX;
+                    const walk = (x - startX) * 1.5;
+                    row.style.transform = `translateX(${currentTransform + walk}px)`;
+                });
+
+                // Touch events
+                row.addEventListener('touchstart', (e) => {
+                    isDown = true;
+                    row.classList.add('dragging');
+                    startX = e.touches[0].pageX;
+                    clearTimeout(resumeTimeout);
+                    pauseAndSetTransform();
+                }, { passive: true });
+
+                row.addEventListener('touchend', () => {
+                    isDown = false;
+                    row.classList.remove('dragging');
+                    resumeTimeout = setTimeout(resumeAnimation, 3000);
+                });
+
+                row.addEventListener('touchmove', (e) => {
+                    if (!isDown) return;
+                    const x = e.touches[0].pageX;
+                    const walk = (x - startX) * 1.5;
+                    row.style.transform = `translateX(${currentTransform + walk}px)`;
+                }, { passive: true });
+            });
+        }
     </script>
 </body>
 </html>
