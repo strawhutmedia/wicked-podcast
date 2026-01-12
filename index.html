@@ -198,6 +198,70 @@
             color: #FFD700;
         }
 
+        /* Milestones Section */
+        .milestones {
+            margin-top: 3rem;
+            text-align: left;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .milestones-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--green), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .milestone-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .milestone-bullet {
+            color: var(--green);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .milestone-text {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .milestone-text strong {
+            color: var(--white);
+        }
+
+        .milestone-highlight {
+            color: var(--pink);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .milestones {
+                padding: 0 10px;
+            }
+
+            .milestone-item {
+                font-size: 0.85rem;
+            }
+
+            .milestones-title {
+                font-size: 1.1rem;
+            }
+        }
+
         /* Scroll indicator */
         .scroll-indicator {
             position: absolute;
@@ -782,6 +846,39 @@
                     <span class="rating-badge-platform">Apple</span>
                     <span class="rating-badge-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
                     <span class="rating-badge-score gradient-text-pink">4.6</span>
+                </div>
+            </div>
+
+            <!-- Series Impact & Key Milestones -->
+            <div class="milestones">
+                <h3 class="milestones-title">Series Impact & Key Milestones</h3>
+                <div class="milestone-item">
+                    <span class="milestone-bullet">&#9679;</span>
+                    <span class="milestone-text"><strong>798K+ Total Reach:</strong> Rapidly scaled to a massive global audience across all platforms in just 11 weeks.</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-bullet">&#9679;</span>
+                    <span class="milestone-text"><strong>57% Avg. Spotify Watch Rate:</strong> High-intensity engagement on Spotify Video; consistently outperformed industry standards for long-form retention (40-50 min episodes).</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-bullet">&#9679;</span>
+                    <span class="milestone-text"><strong>23+ Minute Average Listen Time:</strong> The average listener engaged for over 23 minutes per episode—representing 100% coverage of all key marketing beats and guest interviews in the first half of the show.</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-bullet">&#9679;</span>
+                    <span class="milestone-text"><strong>Massive YouTube Discovery:</strong> Generated over 520,000+ public views across the series, serving as a powerful top-of-funnel awareness engine for the film's release.</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-bullet">&#9679;</span>
+                    <span class="milestone-text"><strong>The "Music" Peak:</strong> Achieved a series-high <span class="milestone-highlight">81% watch rate</span> on Spotify for Episode 4, identifying "Musical Craft" as the highest-interest topic for the fanbase.</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-bullet">&#9679;</span>
+                    <span class="milestone-text"><strong>Elite Platform Ratings:</strong> Secured elite listener sentiment with a <span class="milestone-highlight">4.9/5.0</span> rating on Spotify and <span class="milestone-highlight">4.6/5.0</span> on Apple Podcasts.</span>
+                </div>
+                <div class="milestone-item">
+                    <span class="milestone-bullet">&#9679;</span>
+                    <span class="milestone-text"><strong>Targeted Demographic Success:</strong> Successfully captured the core 25-44 female demographic, the primary engine for Wicked brand loyalty and ticket sales.</span>
                 </div>
             </div>
         </div>
