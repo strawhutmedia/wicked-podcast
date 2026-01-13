@@ -141,12 +141,14 @@
             flex-wrap: wrap;
             margin-top: 3rem;
             contain: layout;
+            width: 100%;
         }
 
         .hero-stat {
             text-align: center;
             contain: layout;
             min-width: 200px;
+            flex: 0 0 auto;
         }
 
         .hero-stat-number {
@@ -157,6 +159,10 @@
             white-space: nowrap;
             will-change: contents;
             contain: layout;
+            min-height: 6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-stat-label {
@@ -175,6 +181,8 @@
             margin-top: 3rem;
             flex-wrap: wrap;
             contain: layout;
+            width: 100%;
+            min-height: 60px;
         }
 
         .rating-badge {
@@ -187,8 +195,10 @@
             border: 1px solid #333;
             transform: translateZ(0);
             backface-visibility: hidden;
-            min-width: 180px;
+            min-width: 200px;
+            width: 200px;
             justify-content: center;
+            flex: 0 0 auto;
         }
 
         .rating-badge img {
@@ -808,11 +818,17 @@
             }
 
             .hero-stat {
-                min-width: 150px;
+                min-width: 140px;
+                flex: 0 0 140px;
+            }
+
+            .hero-stat-number {
+                min-height: 4rem;
             }
 
             .rating-badge {
-                min-width: 160px;
+                min-width: 180px;
+                width: 180px;
             }
 
             .episodes-grid {
@@ -844,8 +860,8 @@
             <h1 class="hero-title">COMPANION PODCAST</h1>
 
             <!-- Big Total Reach Number -->
-            <div class="hero-stat" style="margin-bottom: 2rem;">
-                <div class="hero-stat-number" style="font-size: clamp(4rem, 15vw, 9rem); background: linear-gradient(135deg, #7CB342 0%, #9CCC65 25%, #E91E8C 75%, #FF6BB3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 100px rgba(124, 179, 66, 0.4); min-height: 9rem;" id="totalReach">0</div>
+            <div class="hero-stat" style="margin-bottom: 2rem; min-width: 100%; max-width: 100%;">
+                <div class="hero-stat-number" style="font-size: clamp(4rem, 15vw, 9rem); background: linear-gradient(135deg, #7CB342 0%, #9CCC65 25%, #E91E8C 75%, #FF6BB3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 100px rgba(124, 179, 66, 0.4); min-height: 9rem; width: 100%;" id="totalReach">0</div>
                 <div class="hero-stat-label" style="font-size: 1.2rem; letter-spacing: 3px;">Total Reach</div>
             </div>
 
@@ -909,12 +925,6 @@
                     <span class="milestone-text"><strong>Targeted Demographic Success:</strong> Successfully captured the core 25-44 female demographic, the core audience for Wicked content.</span>
                 </div>
             </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-            </svg>
         </div>
     </section>
 
