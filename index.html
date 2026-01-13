@@ -146,6 +146,7 @@
         .hero-stat {
             text-align: center;
             contain: layout;
+            min-width: 200px;
         }
 
         .hero-stat-number {
@@ -177,7 +178,7 @@
         }
 
         .rating-badge {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
             background: var(--dark-gray);
@@ -186,6 +187,8 @@
             border: 1px solid #333;
             transform: translateZ(0);
             backface-visibility: hidden;
+            min-width: 180px;
+            justify-content: center;
         }
 
         .rating-badge img {
@@ -201,6 +204,8 @@
         .rating-badge-score {
             font-weight: 900;
             font-size: 1.2rem;
+            min-width: 40px;
+            display: inline-block;
         }
 
         .rating-badge-stars {
@@ -271,7 +276,7 @@
             }
 
             .scroll-indicator {
-                margin-top: 8rem;
+                display: none;
             }
         }
 
@@ -800,6 +805,14 @@
 
             .hero-stats {
                 gap: 30px;
+            }
+
+            .hero-stat {
+                min-width: 150px;
+            }
+
+            .rating-badge {
+                min-width: 160px;
             }
 
             .episodes-grid {
