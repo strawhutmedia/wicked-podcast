@@ -278,6 +278,14 @@
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 2s infinite;
+            display: none; /* Hidden by default due to long hero content */
+        }
+
+        /* Only show on very large screens */
+        @media (min-width: 1400px) and (min-height: 900px) {
+            .scroll-indicator {
+                display: block;
+            }
         }
 
         .scroll-indicator svg {
@@ -814,10 +822,6 @@
             .bar-label {
                 min-width: 70px;
                 font-size: 0.8rem;
-            }
-
-            .scroll-indicator {
-                display: none;
             }
         }
     </style>
