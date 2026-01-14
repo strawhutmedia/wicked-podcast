@@ -521,6 +521,90 @@
             letter-spacing: 2px;
         }
 
+        /* Social Media Platform Cards */
+        .social-platforms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .social-platform-card {
+            background: var(--dark-gray);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid #222;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-platform-card.peacock-accent {
+            border-color: rgba(0, 153, 204, 0.3);
+        }
+
+        .social-platform-card.youtube-accent {
+            border-color: rgba(255, 0, 0, 0.3);
+        }
+
+        .social-platform-card.instagram-accent {
+            border-color: rgba(233, 30, 140, 0.3);
+        }
+
+        .social-platform-card.tiktok-accent {
+            border-color: rgba(124, 179, 66, 0.3);
+        }
+
+        .social-platform-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .social-platform-icon {
+            font-size: 2.5rem;
+        }
+
+        .social-platform-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .social-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .social-metric-label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .social-metric-value {
+            font-size: 1.5rem;
+            font-weight: 900;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .social-metric-value.highlight {
+            font-size: 2rem;
+        }
+
         /* Audience Section */
         .audience-grid {
             display: grid;
@@ -905,7 +989,7 @@
             <!-- Big Total Reach Number -->
             <div class="hero-stat" style="margin-bottom: 2rem; min-width: 100%; max-width: 100%;">
                 <div class="hero-stat-number" style="font-size: clamp(4rem, 15vw, 9rem); background: linear-gradient(135deg, #7CB342 0%, #9CCC65 25%, #E91E8C 75%, #FF6BB3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 100px rgba(124, 179, 66, 0.4); min-height: 9rem; width: 100%;" id="totalReach">0</div>
-                <div class="hero-stat-label" style="font-size: 1.2rem; letter-spacing: 3px;">Total Reach</div>
+                <div class="hero-stat-label" style="font-size: 1.2rem; letter-spacing: 3px;">Total Reach Across All Platforms</div>
             </div>
 
             <div class="hero-stats">
@@ -941,7 +1025,7 @@
                 <h3 class="milestones-title">Series Impact & Key Milestones</h3>
                 <div class="milestone-item">
                     <span class="milestone-bullet">&#9679;</span>
-                    <span class="milestone-text"><strong>798K+ Total Reach:</strong> Rapidly scaled to a massive global audience across all platforms in just 11 weeks.</span>
+                    <span class="milestone-text"><strong>11.8M+ Total Reach:</strong> Rapidly scaled to a massive global audience across RSS, YouTube, Peacock, Instagram, and TikTok in just 11 weeks.</span>
                 </div>
                 <div class="milestone-item">
                     <span class="milestone-bullet">&#9679;</span>
@@ -975,7 +1059,7 @@
     <section class="animate-on-scroll">
         <h2 class="section-title gradient-text-green">Explosive Growth</h2>
         <div class="underline"></div>
-        <p class="section-subtitle">From launch to 798K+ total reach in just 11 weeks</p>
+        <p class="section-subtitle">From launch to 11.8M+ total reach across all platforms in just 11 weeks</p>
 
         <div class="chart-container">
             <div class="chart-header">
@@ -1047,6 +1131,99 @@
                 <div class="big-stat-icon">&#9200;</div>
                 <div class="big-stat-value gradient-text-pink">23.1</div>
                 <div class="big-stat-label">Avg. Minutes/Episode</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Impact Section -->
+    <section class="animate-on-scroll">
+        <h2 class="section-title gradient-text-pink">Social Media Impact</h2>
+        <div class="underline"></div>
+        <p class="section-subtitle">Massive reach across YouTube, Instagram, TikTok, and Peacock</p>
+
+        <div class="social-platforms">
+            <!-- Peacock Card -->
+            <div class="social-platform-card peacock-accent">
+                <div class="social-platform-header">
+                    <div class="social-platform-icon">📺</div>
+                    <div class="social-platform-name">Peacock</div>
+                </div>
+                <div class="social-metrics">
+                    <div class="social-metric-row">
+                        <div class="social-metric-label">Total Reach</div>
+                        <div class="social-metric-value gradient-text-green">46K</div>
+                    </div>
+                    <div class="social-metric-row">
+                        <div class="social-metric-label">Hours Watched</div>
+                        <div class="social-metric-value gradient-text-pink">16K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YouTube Card -->
+            <div class="social-platform-card youtube-accent">
+                <div class="social-platform-header">
+                    <div class="social-platform-icon">▶️</div>
+                    <div class="social-platform-name">YouTube</div>
+                </div>
+                <div class="social-metrics">
+                    <div class="social-metric-row">
+                        <div class="social-metric-label">Total Views</div>
+                        <div class="social-metric-value highlight gradient-text-green">508K</div>
+                    </div>
+                    <div class="social-metric-row">
+                        <div class="social-metric-label">Avg Views</div>
+                        <div class="social-metric-value gradient-text-pink">64K</div>
+                    </div>
+                    <div class="social-metric-row">
+                        <div class="social-metric-label">Peak Video</div>
+                        <div class="social-metric-value gradient-text-green">163K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram Card -->
+            <div class="social-platform-card instagram-accent">
+                <div class="social-platform-header">
+                    <div class="social-platform-icon">📸</div>
+                    <div class="social-platform-name">Instagram</div>
+                </div>
+                <div class="social-metrics">
+                    <div class="social-metric-row">
+                        <div class="social-metric-label">Total Views (5 Reels)</div>
+                        <div class="social-metric-value highlight gradient-text-pink">5.6M</div>
+                    </div>
+                    <div class="social-metric-row">
+                        <div class="social-metric-label">Avg Views</div>
+                        <div class="social-metric-value gradient-text-green">1.1M</div>
+                    </div>
+                    <div class="social-metric-row">
+                        <div class="social-metric-label">Peak Reel</div>
+                        <div class="social-metric-value gradient-text-pink">2.0M</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TikTok Card -->
+            <div class="social-platform-card tiktok-accent">
+                <div class="social-platform-header">
+                    <div class="social-platform-icon">🎵</div>
+                    <div class="social-platform-name">TikTok</div>
+                </div>
+                <div class="social-metrics">
+                    <div class="social-metric-row">
+                        <div class="social-metric-label">Total Views (5 TikToks)</div>
+                        <div class="social-metric-value highlight gradient-text-green">5.4M</div>
+                    </div>
+                    <div class="social-metric-row">
+                        <div class="social-metric-label">Avg Views</div>
+                        <div class="social-metric-value gradient-text-pink">1.1M</div>
+                    </div>
+                    <div class="social-metric-row">
+                        <div class="social-metric-label">Peak TikTok</div>
+                        <div class="social-metric-value gradient-text-green">2.4M</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1810,9 +1987,9 @@
 
         // Initialize on page load
         window.addEventListener('load', () => {
-            // Animate hero numbers - Big total reach first
+            // Animate hero numbers - Big total reach first (includes RSS, YouTube, Peacock, Instagram, TikTok)
             setTimeout(() => {
-                animateNumber(document.getElementById('totalReach'), 798647, 2500);
+                animateNumber(document.getElementById('totalReach'), 11842283, 2500);
             }, 300);
 
             setTimeout(() => {
