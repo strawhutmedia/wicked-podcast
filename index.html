@@ -1037,7 +1037,7 @@
                 </div>
                 <div class="milestone-item">
                     <span class="milestone-bullet">&#9679;</span>
-                    <span class="milestone-text"><strong>Massive YouTube Discovery:</strong> Generated over 510,000 public views across the series (8 episodes), driving discovery and expanding the film's reach to new audiences.</span>
+                    <span class="milestone-text"><strong>Massive YouTube Discovery:</strong> Generated over 530,000 public views across the series (8 episodes), driving discovery and expanding the film's reach to new audiences.</span>
                 </div>
                 <div class="milestone-item">
                     <span class="milestone-bullet">&#9679;</span>
@@ -1996,9 +1996,9 @@
                     if (entry.target.querySelector('.big-stats') && !statsAnimated) {
                         statsAnimated = true;
                         setTimeout(() => {
-                            animateNumber(document.getElementById('statDownloads'), 288283);
-                            animateNumber(document.getElementById('statImpressions'), 314969);
-                            animateNumber(document.getElementById('statYouTube'), 510364);
+                            animateNumber(document.getElementById('statDownloads'), 185016);
+                            animateNumber(document.getElementById('statImpressions'), 370032);
+                            animateNumber(document.getElementById('statYouTube'), 530848);
                         }, 300);
                     }
                 }
@@ -2012,21 +2012,21 @@
         // Initialize on page load
         window.addEventListener('load', () => {
             // Animate hero numbers - Big total reach first (includes RSS, YouTube, Instagram, TikTok)
-            // RSS: 288,283 + YouTube: 510,364 + Instagram: 5,641,000 + TikTok: 5,385,000 = 11,824,647
+            // RSS: 185,016 + YouTube: 530,848 + Instagram: 5,600,000 + TikTok: 5,400,000 = 11,715,864
             // Note: Peacock data will be added once we have per-episode numbers
             setTimeout(() => {
-                animateNumber(document.getElementById('totalReach'), 11824647, 2500);
+                animateNumber(document.getElementById('totalReach'), 11715864, 2500);
             }, 300);
 
             setTimeout(() => {
-                animateNumber(document.getElementById('totalDownloads'), 288283, 2000);
-                animateNumber(document.getElementById('totalYouTube'), 510364, 2000);
+                animateNumber(document.getElementById('totalDownloads'), 185016, 2000);
+                animateNumber(document.getElementById('totalYouTube'), 530848, 2000);
             }, 800);
 
             setTimeout(() => {
-                animateNumber(document.getElementById('statDownloads'), 288283);
-                animateNumber(document.getElementById('statImpressions'), 314969);
-                animateNumber(document.getElementById('statYouTube'), 510364);
+                animateNumber(document.getElementById('statDownloads'), 185016);
+                animateNumber(document.getElementById('statImpressions'), 370032);
+                animateNumber(document.getElementById('statYouTube'), 530848);
             }, 1000);
 
             // Draw chart (but don't animate yet - wait for scroll)
